@@ -16,6 +16,11 @@
     "doctrine",
     "phpunit"
   ],
+  "extra": {
+    "zf": {
+      "component": "Facile\\DoctrineTestModule"
+    }
+  },
   "config": {
     "sort-packages": true
   },
