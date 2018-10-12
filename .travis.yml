@@ -21,9 +21,6 @@ matrix:
   - php: 7.1
     env:
     - EXECUTE_TEST_PHPSTAN=true
-    - DEPS=latest
-  - php: 7.1
-    env:
     - EXECUTE_TEST_SCRUTINIZER=true
     - DEPS=latest
   - php: 7.2
