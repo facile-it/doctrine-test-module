@@ -35,6 +35,7 @@
   "require-dev": {
     "doctrine/dbal": "~2.5",
     "phpstan/phpstan": "^0.10.3",
+    "phpstan/phpstan-phpunit": "^0.10.0",
     "phpunit/phpunit": "^6.0 || ^7.0"
   },
   "autoload": {
