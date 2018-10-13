@@ -22,7 +22,7 @@ class MockDriver implements Driver
             // PHPUnit 6.5+
             $generator = new Generator();
         } else {
-            $generator = new \PHPUnit_Framework_MockObject_Generator();
+            $generator = new Generator();
         }
         return $generator->getMock(
             $class,
@@ -34,7 +34,11 @@ class MockDriver implements Driver
     }
 
     /**
-     * {@inheritdoc}
+     * @param array $params
+     * @param null $username
+     * @param null $password
+     * @param array $driverOptions
+     * @return Driver\Connection|object
      */
     public function connect(array $params, $username = null, $password = null, array $driverOptions = [])
     {
@@ -42,7 +46,7 @@ class MockDriver implements Driver
     }
 
     /**
-     * {@inheritdoc}
+     * @return AbstractPlatform|object
      */
     public function getDatabasePlatform()
     {
@@ -50,7 +54,8 @@ class MockDriver implements Driver
     }
 
     /**
-     * {@inheritdoc}
+     * @param Connection $conn
+     * @return AbstractSchemaManager|object
      */
     public function getSchemaManager(Connection $conn)
     {
