@@ -44,7 +44,7 @@ install:
 - travis_retry composer install $COMPOSER_ARGS
 
 script:
-- if [[ $EXECUTE_TEST_PHPSTAN == 'true' ]]; then ./vendor/bin/phpstan analyse -l 7 src ; fi
+- if [[ $EXECUTE_TEST_PHPSTAN == 'true' ]]; then ./vendor/bin/phpstan analyse -l 7 . ; fi
 - if [[ $EXECUTE_TEST_SCRUTINIZER == 'true' ]]; then ./vendor/bin/phpunit --coverage-clover coverage.clover ; fi
 - if [[ $EXECUTE_TEST_SCRUTINIZER != 'true' ]]; then ./vendor/bin/phpunit ; fi
 
