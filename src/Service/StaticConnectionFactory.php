@@ -17,6 +17,7 @@ class StaticConnectionFactory extends DBALConnectionFactory
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
+        /** @var Connection $connectionOriginalDriver */
         $connectionOriginalDriver = parent::__invoke($container, $requestedName, $options);
 
         // wrapper class can be overridden/customized in params (see Doctrine\DBAL\DriverManager)
