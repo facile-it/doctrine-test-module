@@ -8,26 +8,18 @@ use PHPUnit\Framework\TestCase;
 
 class StaticDriverTest extends TestCase
 {
-    /**
-     * @var AbstractPlatform|\PHPUnit_Framework_MockObject_MockObject
-     */
-    private $platform;
-
-    public function setUp(): void
-    {
-        $this->platform = $this->createMock(AbstractPlatform::class);
-    }
-
     public function testReturnCorrectPlatform()
     {
-        $driver = new StaticDriver(new MockDriver(), $this->platform);
-        $this->assertSame($this->platform, $driver->getDatabasePlatform());
-        $this->assertSame($this->platform, $driver->createDatabasePlatformForVersion('1'));
+        $platform = $this->createMock(AbstractPlatform::class);
+        $driver = new StaticDriver(new MockDriver(), $platform);
+        $this->assertSame($platform, $driver->getDatabasePlatform());
+        $this->assertSame($platform, $driver->createDatabasePlatformForVersion('1'));
     }
 
     public function testConnect()
     {
-        $driver = new StaticDriver(new MockDriver(), $this->platform);
+        $platform = $this->createMock(AbstractPlatform::class);
+        $driver = new StaticDriver(new MockDriver(), $platform);
         $driver::setKeepStaticConnections(true);
         /** @var StaticConnection $connection1 */
         $connection1 = $driver->connect(['database_name' => 1], 'user1', 'pw1');
@@ -35,7 +27,7 @@ class StaticDriverTest extends TestCase
         $connection2 = $driver->connect(['database_name' => 2], 'user1', 'pw2');
         $this->assertInstanceOf(StaticConnection::class, $connection1);
         $this->assertNotSame($connection1->getWrappedConnection(), $connection2->getWrappedConnection());
-        $driver = new StaticDriver(new MockDriver(), $this->platform);
+        $driver = new StaticDriver(new MockDriver(), $platform);
         /** @var StaticConnection $connectionNew1 */
         $connectionNew1 = $driver->connect(['database_name' => 1], 'user1', 'pw1');
         /** @var StaticConnection $connectionNew2 */
