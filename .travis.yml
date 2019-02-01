@@ -20,8 +20,6 @@ matrix:
     - DEPS=lowest
   - php: 7.1
     env:
-    - EXECUTE_TEST_PHPSTAN=true
-    - EXECUTE_TEST_SCRUTINIZER=true
     - DEPS=latest
   - php: 7.2
     env:
@@ -29,6 +27,14 @@ matrix:
   - php: 7.2
     env:
     - DEPS=latest
+    - EXECUTE_TEST_PHPSTAN=true
+    - EXECUTE_TEST_SCRUTINIZER=true
+  - php: 7.3
+    env:
+      - DEPS=lowest
+  - php: 7.3
+    env:
+      - DEPS=latest
   - php: nightly
     env:
     - DEPS=lowest
