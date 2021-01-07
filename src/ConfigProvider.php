@@ -6,11 +6,11 @@ namespace Facile\DoctrineTestModule;
 class ConfigProvider
 {
     /**
-     * Configuration for zend-expressive
+     * Configuration for mezzio
      *
-     * @return array
+     * @return array<string, mixed>
      */
-    public function __invoke()
+    public function __invoke(): array
     {
         return \array_merge(
             $this->getConfig(),
@@ -21,9 +21,9 @@ class ConfigProvider
     }
 
     /**
-     * Configuration for zend-mvc
+     * Configuration for laminas-mvc
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function getConfig(): array
     {
@@ -35,9 +35,9 @@ class ConfigProvider
     }
 
     /**
-     * Zend servicemanager dependencies
+     * Laminas servicemanager dependencies
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function getDependencies(): array
     {

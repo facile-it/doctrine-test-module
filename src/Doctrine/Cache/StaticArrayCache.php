@@ -8,7 +8,7 @@ use Doctrine\Common\Cache\CacheProvider;
 class StaticArrayCache extends CacheProvider
 {
     /**
-     * @var array
+     * @var array<mixed>
      */
     private static $data = [];
 

@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class StaticDriverTest extends TestCase
 {
-    public function testReturnCorrectPlatform()
+    public function testReturnCorrectPlatform(): void
     {
         $platform = $this->createMock(AbstractPlatform::class);
         $driver = new StaticDriver(new MockDriver(), $platform);
@@ -16,7 +16,7 @@ class StaticDriverTest extends TestCase
         $this->assertSame($platform, $driver->createDatabasePlatformForVersion('1'));
     }
 
-    public function testConnect()
+    public function testConnect(): void
     {
         $platform = $this->createMock(AbstractPlatform::class);
         $driver = new StaticDriver(new MockDriver(), $platform);
