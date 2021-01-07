@@ -16,7 +16,7 @@ class MockDriver implements Driver
      *
      * @return object
      */
-    private function getMock($class)
+    private function getMock(string $class): object
     {
         if (class_exists(Generator::class)) {
             // PHPUnit 6.5+
@@ -34,10 +34,10 @@ class MockDriver implements Driver
     }
 
     /**
-     * @param array $params
-     * @param null $username
-     * @param null $password
-     * @param array $driverOptions
+     * @param array<string, mixed> $params
+     * @param ?string $username
+     * @param ?string $password
+     * @param array<string, mixed> $driverOptions
      * @return Driver\Connection|object
      */
     public function connect(array $params, $username = null, $password = null, array $driverOptions = [])

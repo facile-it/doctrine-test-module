@@ -5,7 +5,9 @@ namespace Facile\DoctrineTestModule;
 
 class Module
 {
-
+    /**
+     * @return array<string, mixed>
+     */
     public function getConfig(): array
     {
         $provider = new ConfigProvider();
