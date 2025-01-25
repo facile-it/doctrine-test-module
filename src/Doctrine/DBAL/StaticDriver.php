@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Facile\DoctrineTestModule\Doctrine\DBAL;
@@ -17,14 +18,17 @@ class StaticDriver implements Driver, ExceptionConverterDriver, VersionAwarePlat
      * @var Connection[]
      */
     private static $connections = [];
+
     /**
      * @var bool
      */
     private static $keepStaticConnections = false;
+
     /**
      * @var Driver
      */
     private $underlyingDriver;
+
     /**
      * @var AbstractPlatform
      */
@@ -37,16 +41,20 @@ class StaticDriver implements Driver, ExceptionConverterDriver, VersionAwarePlat
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function connect(array $params, $username = null, $password = null, array $driverOptions = [])
     {
         if (self::$keepStaticConnections) {
             $key = sha1(serialize($params) . $username . $password);
 
-            if (!isset(self::$connections[$key])) {
-                self::$connections[$key] = $this->underlyingDriver->connect($params, $username, $password,
-                    $driverOptions);
+            if (! isset(self::$connections[$key])) {
+                self::$connections[$key] = $this->underlyingDriver->connect(
+                    $params,
+                    $username,
+                    $password,
+                    $driverOptions
+                );
                 self::$connections[$key]->beginTransaction();
             }
 
@@ -57,7 +65,7 @@ class StaticDriver implements Driver, ExceptionConverterDriver, VersionAwarePlat
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getDatabasePlatform()
     {
@@ -65,7 +73,7 @@ class StaticDriver implements Driver, ExceptionConverterDriver, VersionAwarePlat
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getSchemaManager(\Doctrine\DBAL\Connection $conn)
     {
@@ -73,7 +81,7 @@ class StaticDriver implements Driver, ExceptionConverterDriver, VersionAwarePlat
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getName()
     {
@@ -81,7 +89,7 @@ class StaticDriver implements Driver, ExceptionConverterDriver, VersionAwarePlat
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getDatabase(\Doctrine\DBAL\Connection $conn)
     {
@@ -89,7 +97,7 @@ class StaticDriver implements Driver, ExceptionConverterDriver, VersionAwarePlat
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function convertException($message, DriverException $exception)
     {
@@ -101,7 +109,7 @@ class StaticDriver implements Driver, ExceptionConverterDriver, VersionAwarePlat
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function createDatabasePlatformForVersion($version)
     {
@@ -130,7 +138,7 @@ class StaticDriver implements Driver, ExceptionConverterDriver, VersionAwarePlat
             try {
                 $con->beginTransaction();
             } catch (\PDOException $e) {
-                //transaction could be started already
+                // transaction could be started already
             }
         }
     }

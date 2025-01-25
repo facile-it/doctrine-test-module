@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Facile\DoctrineTestModule\Doctrine\DBAL;
@@ -11,11 +12,6 @@ use PHPUnit\Framework\MockObject\Generator;
 
 class MockDriver implements Driver
 {
-    /**
-     * @param string $class
-     *
-     * @return object
-     */
     private function getMock(string $class): object
     {
         if (class_exists(Generator::class)) {
@@ -24,6 +20,7 @@ class MockDriver implements Driver
         } else {
             $generator = new Generator();
         }
+
         return $generator->getMock(
             $class,
             [],
@@ -38,6 +35,7 @@ class MockDriver implements Driver
      * @param ?string $username
      * @param ?string $password
      * @param array<string, mixed> $driverOptions
+     *
      * @return Driver\Connection|object
      */
     public function connect(array $params, $username = null, $password = null, array $driverOptions = [])
@@ -54,7 +52,6 @@ class MockDriver implements Driver
     }
 
     /**
-     * @param Connection $conn
      * @return AbstractSchemaManager|object
      */
     public function getSchemaManager(Connection $conn)
@@ -63,7 +60,7 @@ class MockDriver implements Driver
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getName()
     {
@@ -71,7 +68,7 @@ class MockDriver implements Driver
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getDatabase(Connection $conn)
     {

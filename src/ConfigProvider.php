@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Facile\DoctrineTestModule;
@@ -6,7 +7,7 @@ namespace Facile\DoctrineTestModule;
 class ConfigProvider
 {
     /**
-     * Configuration for mezzio
+     * Configuration for mezzio.
      *
      * @return array<string, mixed>
      */
@@ -15,13 +16,13 @@ class ConfigProvider
         return \array_merge(
             $this->getConfig(),
             [
-                'dependencies' => $this->getDependencies()
+                'dependencies' => $this->getDependencies(),
             ]
         );
     }
 
     /**
-     * Configuration for laminas-mvc
+     * Configuration for laminas-mvc.
      *
      * @return array<string, mixed>
      */
@@ -35,7 +36,7 @@ class ConfigProvider
     }
 
     /**
-     * Laminas servicemanager dependencies
+     * Laminas servicemanager dependencies.
      *
      * @return array<string, mixed>
      */

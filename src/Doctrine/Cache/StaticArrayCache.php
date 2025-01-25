@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Facile\DoctrineTestModule\Doctrine\Cache;
@@ -13,7 +14,7 @@ class StaticArrayCache extends CacheProvider
     private static $data = [];
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function doFetch($id)
     {
@@ -21,7 +22,7 @@ class StaticArrayCache extends CacheProvider
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function doContains($id)
     {
@@ -30,34 +31,37 @@ class StaticArrayCache extends CacheProvider
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function doSave($id, $data, $lifeTime = 0)
     {
         self::$data[$id] = $data;
+
         return true;
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function doDelete($id)
     {
         unset(self::$data[$id]);
+
         return true;
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function doFlush()
     {
         self::$data = [];
+
         return true;
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function doGetStats()
     {

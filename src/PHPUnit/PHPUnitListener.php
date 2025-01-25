@@ -1,43 +1,27 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Facile\DoctrineTestModule\PHPUnit;
 
 use Facile\DoctrineTestModule\Doctrine\DBAL\StaticDriver;
 
-if (class_exists('\PHPUnit\Framework\BaseTestListener')) {
-    // PHPUnit 6
-    class PHPUnitListener extends \PHPUnit\Framework\BaseTestListener
+class PHPUnitListener implements \PHPUnit\Framework\TestListener
+{
+    use \PHPUnit\Framework\TestListenerDefaultImplementation;
+
+    public function startTest(\PHPUnit\Framework\Test $test): void
     {
-        public function startTest(\PHPUnit\Framework\Test $test)
-        {
-            StaticDriver::beginTransaction();
-        }
-        public function endTest(\PHPUnit\Framework\Test $test, $time)
-        {
-            StaticDriver::rollBack();
-        }
-        public function startTestSuite(\PHPUnit\Framework\TestSuite $suite)
-        {
-            StaticDriver::setKeepStaticConnections(true);
-        }
+        StaticDriver::beginTransaction();
     }
-} elseif (trait_exists('\PHPUnit\Framework\TestListenerDefaultImplementation')) {
-    // PHPUnit 7+
-    class PHPUnitListener implements \PHPUnit\Framework\TestListener
+
+    public function endTest(\PHPUnit\Framework\Test $test, float $time): void
     {
-        use \PHPUnit\Framework\TestListenerDefaultImplementation;
-        public function startTest(\PHPUnit\Framework\Test $test): void
-        {
-            StaticDriver::beginTransaction();
-        }
-        public function endTest(\PHPUnit\Framework\Test $test, float $time): void
-        {
-            StaticDriver::rollBack();
-        }
-        public function startTestSuite(\PHPUnit\Framework\TestSuite $suite): void
-        {
-            StaticDriver::setKeepStaticConnections(true);
-        }
+        StaticDriver::rollBack();
+    }
+
+    public function startTestSuite(\PHPUnit\Framework\TestSuite $suite): void
+    {
+        StaticDriver::setKeepStaticConnections(true);
     }
 }

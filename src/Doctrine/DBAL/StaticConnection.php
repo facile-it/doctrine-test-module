@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Facile\DoctrineTestModule\Doctrine\DBAL;
@@ -14,21 +15,19 @@ class StaticConnection implements Connection
      * @var Connection
      */
     private $connection;
+
     /**
      * @var bool
      */
     private $transactionStarted = false;
 
-    /**
-     * @param Connection $connection
-     */
     public function __construct(Connection $connection)
     {
         $this->connection = $connection;
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function prepare($prepareString)
     {
@@ -36,7 +35,7 @@ class StaticConnection implements Connection
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function query()
     {
@@ -44,7 +43,7 @@ class StaticConnection implements Connection
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function quote($input, $type = \PDO::PARAM_STR)
     {
@@ -52,7 +51,7 @@ class StaticConnection implements Connection
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function exec($statement)
     {
@@ -60,7 +59,7 @@ class StaticConnection implements Connection
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function lastInsertId($name = null)
     {
@@ -68,7 +67,7 @@ class StaticConnection implements Connection
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function beginTransaction()
     {
@@ -80,7 +79,7 @@ class StaticConnection implements Connection
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function commit()
     {
@@ -88,7 +87,7 @@ class StaticConnection implements Connection
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function rollBack()
     {
@@ -96,7 +95,7 @@ class StaticConnection implements Connection
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function errorCode()
     {
@@ -104,7 +103,7 @@ class StaticConnection implements Connection
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function errorInfo()
     {

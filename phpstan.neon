@@ -1,7 +1,0 @@
-parameters:
-    level: max
-    excludes_analyse:
-    		- %rootDir%/../../../vendor/*
-includes:
-	- vendor/phpstan/phpstan-phpunit/extension.neon
-

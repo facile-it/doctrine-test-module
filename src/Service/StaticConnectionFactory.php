@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Facile\DoctrineTestModule\Service;
@@ -6,12 +7,12 @@ namespace Facile\DoctrineTestModule\Service;
 use DoctrineORMModule\Service\DBALConnectionFactory;
 use Doctrine\DBAL\Connection;
 use Facile\DoctrineTestModule\Doctrine\DBAL\StaticDriver;
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 
 class StaticConnectionFactory extends DBALConnectionFactory
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      *
      * @return Connection
      */
