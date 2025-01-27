@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Facile\DoctrineTestModule;
 
-class ConfigProvider
+final class ConfigProvider
 {
+    public const CONFIGURATION = 'doctrine_test_module';
+
     /**
      * Configuration for mezzio.
      *
@@ -29,6 +31,9 @@ class ConfigProvider
     public function getConfig(): array
     {
         return [
+            self::CONFIGURATION => [
+                'enable_static_connection' => true,
+            ],
             'doctrine_factories' => [
                 'connection' => Service\StaticConnectionFactory::class,
             ],

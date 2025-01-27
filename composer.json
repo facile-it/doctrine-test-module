@@ -1,7 +1,7 @@
 {
   "name": "facile-it/doctrine-test-module",
   "type": "library",
-  "description": "Zend Framework module that provides features that help you run your Zend-framework-based App's testsuite more efficiently with isolated tests",
+  "description": "Laminas Framework module that provides features that help you run your Laminas-based App's testsuite more efficiently with isolated tests",
   "homepage": "https://github.com/facile-it/doctrine-test-module",
   "license": "MIT",
   "authors": [
@@ -11,13 +11,14 @@
     }
   ],
   "keywords": [
-    "zend",
-    "zend framework",
+    "laminas",
+    "mezzio",
     "doctrine",
-    "phpunit"
+    "phpunit",
+    "testing"
   ],
   "extra": {
-    "zf": {
+    "laminas": {
       "component": "Facile\\DoctrineTestModule"
     }
   },
@@ -29,12 +30,13 @@
   },
   "require": {
     "php": "^7.4 || ^8.0",
-    "phpunit/phpunit": "^9.0.0",
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "phpunit/phpunit": "^9.6.22",
     "doctrine/cache": "^1.10 || ^2.0",
-    "doctrine/dbal": "^2.5",
+    "doctrine/dbal": "^2.11.3 || ^3.0",
     "doctrine/doctrine-module": "^4.0 || ^5.0 || ^6.0",
-    "doctrine/doctrine-orm-module": "^2.1.7 || ^3.0 || ^4.0 || ^5.0 || ^6.0",
-    "laminas/laminas-servicemanager": "^3.11 || ^4.0",
+    "doctrine/doctrine-orm-module": "^3.0 || ^4.0 || ^5.0 || ^6.0",
     "psr/container": "^1.0 || ^2.0"
   },
   "require-dev": {
