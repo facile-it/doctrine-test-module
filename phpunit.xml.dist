@@ -4,13 +4,12 @@
         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
         bootstrap="./vendor/autoload.php"
         colors="true"
-        verbose="true"
         stopOnFailure="false"
         processIsolation="false"
         backupGlobals="false"
-        failOnError="true"
-        failOnNotice="true"
-        failOnWarning="true"
+        stopError="true"
+        stopNotice="true"
+        stopWarning="true"
         cacheDirectory=".phpunit.cache"
 >
     <testsuites>
@@ -18,4 +17,14 @@
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
+
+    <source>
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+        <exclude>
+            <directory suffix="Test.php">./tests</directory>
+            <directory>./vendor</directory>
+        </exclude>
+    </source>
 </phpunit>
