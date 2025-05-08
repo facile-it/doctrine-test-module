@@ -20,26 +20,27 @@ use PHPUnit\TextUI\Configuration\Configuration;
 
 class PHPUnitExtension implements Extension
 {
-    public function bootstrap( Configuration $configuration, Facade $facade, ParameterCollection $parameters ): void {
-        $facade->registerSubscriber(new class($this) implements BeforeFirstTestMethodCalledSubscriber {
+    public function bootstrap(Configuration $configuration, Facade $facade, ParameterCollection $parameters): void
+    {
+        $facade->registerSubscriber(new class ($this) implements BeforeFirstTestMethodCalledSubscriber {
             public function notify(BeforeFirstTestMethodCalled $event): void
             {
                 StaticDriver::setKeepStaticConnections(true);
             }
         });
-        $facade->registerSubscriber(new class($this) implements BeforeTestMethodCalledSubscriber {
+        $facade->registerSubscriber(new class ($this) implements BeforeTestMethodCalledSubscriber {
             public function notify(BeforeTestMethodCalled $event): void
             {
                 StaticDriver::beginTransaction();
             }
         });
-        $facade->registerSubscriber(new class($this) implements AfterTestMethodCalledSubscriber {
+        $facade->registerSubscriber(new class ($this) implements AfterTestMethodCalledSubscriber {
             public function notify(AfterTestMethodCalled $event): void
             {
                 StaticDriver::rollBack();
             }
         });
-        $facade->registerSubscriber(new class($this) implements AfterLastTestMethodCalledSubscriber {
+        $facade->registerSubscriber(new class ($this) implements AfterLastTestMethodCalledSubscriber {
             public function notify(AfterLastTestMethodCalled $event): void
             {
                 StaticDriver::setKeepStaticConnections(false);
