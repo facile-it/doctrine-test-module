@@ -7,9 +7,9 @@
         stopOnFailure="false"
         processIsolation="false"
         backupGlobals="false"
-        stopError="true"
-        stopNotice="true"
-        stopWarning="true"
+        stopOnError="true"
+        stopOnNotice="true"
+        stopOnWarning="true"
         cacheDirectory=".phpunit.cache"
 >
     <testsuites>
