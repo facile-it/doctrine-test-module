@@ -1,62 +1,62 @@
 {
-  "name": "facile-it/doctrine-test-module",
-  "type": "library",
-  "description": "Laminas Framework module that provides features that help you run your Laminas-based App's testsuite more efficiently with isolated tests",
-  "homepage": "https://github.com/facile-it/doctrine-test-module",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Thomas Vargiu",
-      "email": "thomas.vargiu@facile.it"
+    "name": "facile-it/doctrine-test-module",
+    "type": "library",
+    "description": "Laminas Framework module that provides features that help you run your Laminas-based App's testsuite more efficiently with isolated tests",
+    "homepage": "https://github.com/facile-it/doctrine-test-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Vargiu",
+            "email": "thomas.vargiu@facile.it"
+        }
+    ],
+    "keywords": [
+        "laminas",
+        "mezzio",
+        "doctrine",
+        "phpunit",
+        "testing"
+    ],
+    "extra": {
+        "laminas": {
+            "component": "Facile\\DoctrineTestModule"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "facile-it/facile-coding-standard": true
+        }
+    },
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "doctrine/cache": "^1.10 || ^2.0",
+        "doctrine/dbal": "^2.11.3 || ^3.0",
+        "doctrine/doctrine-module": "^4.0 || ^5.0 || ^6.0",
+        "doctrine/doctrine-orm-module": "^3.0 || ^4.0 || ^5.0 || ^6.0",
+        "phpunit/phpunit": "^9.6.22 || ^10",
+        "psr/container": "^1.0 || ^2.0"
+    },
+    "require-dev": {
+        "phpspec/prophecy-phpunit": "^v2.0.0",
+        "facile-it/facile-coding-standard": "^1.3",
+        "friendsofphp/php-cs-fixer": "^3.68.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Facile\\DoctrineTestModule\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Facile\\DoctrineTestModule\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "cs-check": "php-cs-fixer fix --dry-run --diff",
+        "cs-fix": "php-cs-fixer fix --diff"
     }
-  ],
-  "keywords": [
-    "laminas",
-    "mezzio",
-    "doctrine",
-    "phpunit",
-    "testing"
-  ],
-  "extra": {
-    "laminas": {
-      "component": "Facile\\DoctrineTestModule"
-    }
-  },
-  "config": {
-    "sort-packages": true,
-    "allow-plugins": {
-      "facile-it/facile-coding-standard": true
-    }
-  },
-  "require": {
-    "php": "^7.4 || ^8.0",
-    "ext-json": "*",
-    "ext-pdo": "*",
-    "phpunit/phpunit": "^9.6.22",
-    "doctrine/cache": "^1.10 || ^2.0",
-    "doctrine/dbal": "^2.11.3 || ^3.0",
-    "doctrine/doctrine-module": "^4.0 || ^5.0 || ^6.0",
-    "doctrine/doctrine-orm-module": "^3.0 || ^4.0 || ^5.0 || ^6.0",
-    "psr/container": "^1.0 || ^2.0"
-  },
-  "require-dev": {
-    "phpspec/prophecy-phpunit": "^v2.0.0",
-    "facile-it/facile-coding-standard": "^1.3",
-    "friendsofphp/php-cs-fixer": "^3.68.1"
-  },
-  "autoload": {
-    "psr-4": {
-      "Facile\\DoctrineTestModule\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Facile\\DoctrineTestModule\\": "tests/"
-    }
-  },
-  "scripts": {
-    "test": "phpunit",
-    "cs-check": "php-cs-fixer fix --dry-run --diff",
-    "cs-fix": "php-cs-fixer fix --diff"
-  }
 }
