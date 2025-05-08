@@ -1,17 +1,21 @@
-<?xml version="1.0"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
         bootstrap="./vendor/autoload.php"
         colors="true"
-        convertErrorsToExceptions="true"
-        convertNoticesToExceptions="true"
-        convertWarningsToExceptions="true"
         verbose="true"
         stopOnFailure="false"
         processIsolation="false"
         backupGlobals="false"
+        failOnError="true"
+        failOnNotice="true"
+        failOnWarning="true"
+        cacheDirectory=".phpunit.cache"
 >
-    <testsuite name="Facile\DoctrineTestModule tests">
-        <directory>./tests</directory>
-    </testsuite>
+    <testsuites>
+        <testsuite name="Facile\DoctrineTestModule tests">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
 </phpunit>
