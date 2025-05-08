@@ -11,7 +11,7 @@ on:
 jobs:
   phpunit:
     name: "Tests"
-    runs-on: "linux"
+    runs-on: "ubuntu-latest"
 
     strategy:
       matrix:
