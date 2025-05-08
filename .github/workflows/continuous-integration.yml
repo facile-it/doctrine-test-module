@@ -23,9 +23,6 @@ jobs:
           - "highest"
         composer-options:
           - "--prefer-dist"
-        include:
-          - php-version: "7.4"
-            deps: "lowest"
 
 
     steps:
