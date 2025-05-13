@@ -34,9 +34,9 @@
     "ext-pdo": "*",
     "doctrine/cache": "^1.10 || ^2.0",
     "doctrine/dbal": "^2.11.3 || ^3.0",
-    "doctrine/doctrine-module": "^4.2 || <=5.2",
-    "doctrine/doctrine-orm-module": "^4.0 || <=5.2",
-    "psr/container": "^1.0 || ^2.0"
+    "doctrine/doctrine-module": "^5.3",
+    "doctrine/doctrine-orm-module": "^5.3",
+    "psr/container": "^1.1 || ^2.0"
   },
   "require-dev": {
     "facile-it/facile-coding-standard": "^1.3",
