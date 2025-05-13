@@ -21,10 +21,12 @@ jobs:
           - "8.3"
           - "8.4"
         deps:
-          - "lowest"
+          - "highest"
         composer-options:
           - "--prefer-dist"
-
+        include:
+          - php-version: "8.1"
+            deps: "lowest"
 
     steps:
       - name: "Checkout"
