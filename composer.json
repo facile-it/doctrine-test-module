@@ -34,8 +34,8 @@
     "ext-pdo": "*",
     "doctrine/cache": "^1.10 || ^2.0",
     "doctrine/dbal": "^2.11.3 || ^3.0",
-    "doctrine/doctrine-module": "^5.3",
-    "doctrine/doctrine-orm-module": "^5.3",
+    "doctrine/doctrine-module": "^5.3 || ^6.0",
+    "doctrine/doctrine-orm-module": "^5.3 || ^6.0",
     "psr/container": "^1.1 || ^2.0"
   },
   "require-dev": {
