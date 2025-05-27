@@ -26,14 +26,14 @@ class PHPUnitExtension implements Extension
 
     public function bootstrap(Configuration $configuration, Facade $facade, ParameterCollection $parameters): void
     {
-        $facade->registerSubscriber(new class() implements TestRunnerStartedSubscriber {
+        $facade->registerSubscriber(new class implements TestRunnerStartedSubscriber {
             public function notify(TestRunnerStartedEvent $event): void
             {
                 StaticDriver::setKeepStaticConnections(true);
             }
         });
 
-        $facade->registerSubscriber(new class() implements TestStartedSubscriber {
+        $facade->registerSubscriber(new class implements TestStartedSubscriber {
             public function notify(TestStartedEvent $event): void
             {
                 PHPUnitExtension::$rolledBack = false;
@@ -41,7 +41,7 @@ class PHPUnitExtension implements Extension
             }
         });
 
-        $facade->registerSubscriber(new class() implements SkippedSubscriber {
+        $facade->registerSubscriber(new class implements SkippedSubscriber {
             public function notify(Skipped $event): void
             {
                 // this is a workaround to allow skipping tests within the setUp() method
@@ -51,17 +51,17 @@ class PHPUnitExtension implements Extension
             }
         });
 
-        $facade->registerSubscriber(new class() implements TestFinishedSubscriber {
+        $facade->registerSubscriber(new class implements TestFinishedSubscriber {
             public function notify(TestFinishedEvent $event): void
             {
                 // we only roll back if we did not already do it in the SkippedSubscriber
-                if (!PHPUnitExtension::$rolledBack) {
+                if (! PHPUnitExtension::$rolledBack) {
                     StaticDriver::rollBack();
                 }
             }
         });
 
-        $facade->registerSubscriber(new class() implements TestRunnerFinishedSubscriber {
+        $facade->registerSubscriber(new class implements TestRunnerFinishedSubscriber {
             public function notify(TestRunnerFinishedEvent $event): void
             {
                 StaticDriver::setKeepStaticConnections(false);
