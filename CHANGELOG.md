@@ -4,7 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [1.0.0]
+## [1.1.0] - TBA
+- support PHPUnit 11 & 12
+
+## [1.0.0] - 2025-06-10
 - switch to PHPUnit 10
 - dropped support for PHP 7.4 & 8.0
 - dropped support for doctrine/doctrine-module below 5.3
