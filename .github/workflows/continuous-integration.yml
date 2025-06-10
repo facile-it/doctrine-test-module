@@ -10,7 +10,7 @@ on:
 
 jobs:
   phpunit:
-    name: "Tests"
+    name: "PHP ${{ matrix.php-version }} ${{ matrix.description }} (deps: ${{ matrix.deps }})"
     runs-on: "ubuntu-latest"
 
     strategy:
@@ -22,11 +22,21 @@ jobs:
           - "8.4"
         deps:
           - "highest"
-        composer-options:
-          - "--prefer-dist"
+        description:
+          - ''
+        phpunit:
+          - false
         include:
           - php-version: "8.1"
             deps: "lowest"
+          - description: 'PHPUnit 11'
+            deps: "highest"
+            php-version: '8.3'
+            phpunit: "^11"
+          - description: 'PHPUnit 12'
+            deps: "highest"
+            php-version: '8.4'
+            phpunit: "^12"
 
     steps:
       - name: "Checkout"
@@ -41,11 +51,14 @@ jobs:
           coverage: "pcov"
           ini-values: "zend.assertions=1"
 
+      - run: composer require phpunit/phpunit ${{ matrix.phpunit }} --no-update
+        if: matrix.phpunit
+
       - name: "Install dependencies"
         uses: ramsey/composer-install@v3
         with:
           dependency-versions: ${{ matrix.deps }}
-          composer-options: ${{ matrix.composer-options }}
+          composer-options: "--prefer-dist"
 
       - name: "Run PHPUnit"
         run: "vendor/bin/phpunit --coverage-clover=coverage.xml"
