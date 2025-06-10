@@ -10,7 +10,7 @@ on:
 
 jobs:
   phpunit:
-    name: "Tests ${{ matrix.description }}"
+    name: "PHP ${{ matrix.php-version }} ${{ matrix.description }} (deps: ${{ matrix.deps }})"
     runs-on: "ubuntu-latest"
 
     strategy:
